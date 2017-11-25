@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>Form Wizard</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--alerts CSS -->
+    <link href="sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    <!-- Wizard CSS -->
+    <link href="jquery-wizard-master/css/wizard.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style type="text/css">
+    .white-box{padding:25px;margin-bottom:30px}
+    .white-box .box-title{margin:0 0 12px;font-weight:500;text-transform:uppercase;font-size:16px}.panel{border-radius:0;margin-bottom:30px;border:0;box-shadow:none}
+    .box-title{margin:0 0 12px;font-weight:500;text-transform:uppercase;font-size:16px}
+    .text-muted,a.list-group-item:focus,a.list-group-item:hover,button.list-group-item:focus,button.list-group-item:hover,h1 .small,h1 small,h2 .small,h2 small,h3 .small,h3 small,h4 .small,h4 small,h5 .small,h5 small,h6 .small,h6 small,tbody,th{color:#96a2b4}
+    .wizard-steps{display:table;width:100%}.wizard-steps>li{display:table-cell;padding:10px 20px;background:rgba(0,0,0,.1)}.wizard-steps>li span{border-radius:100%;border:1px solid rgba(120,130,140,.13);width:40px;height:40px;display:inline-block;vertical-align:middle;padding-top:9px;margin-right:8px;text-align:center}.wizard-content{padding:25px;border-color:rgba(120,130,140,.13);margin-bottom:30px}.wizard-steps>li.current,.wizard-steps>li.done{background:#2cabe3;color:#fff}.wizard-steps>li.current span,.wizard-steps>li.done span{border-color:#fff;color:#fff}.wizard-steps>li.current h4,.wizard-steps>li.done h4{color:#fff}.wizard-steps>li.done{background:#53e69d}.wizard-steps>li.error{background:#ff7676}
+</style>
+</head>
+<body>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title m-b-0">Basic</h3>
+                            <p class="text-muted m-b-30 font-13"> This is the basic wizrd without validation.</p>
+                            <div id="exampleBasic" class="wizard">
+                                <ul class="wizard-steps" role="tablist">
+                                    <li class="active" role="tab">
+                                        <h4><span>1</span>Step</h4> </li>
+                                    <li role="tab">
+                                        <h4><span>2</span>Step</h4> </li>
+                                    <li role="tab">
+                                        <h4><span>3</span>Step</h4> </li>
+                                </ul>
+                                <div class="wizard-content">
+                                    <div class="wizard-pane active" role="tabpanel"><div class="panel panel-default">
+                                    <!-- Default panel contents -->
+                                    <div class="panel-heading">List Belanja</div>
+                                    <div class="panel-body">
+                                      <p>Nama</p>
+                                    </div>
+
+                                    <!-- List group -->
+                                    <ul class="list-group">
+                                      <li class="list-group-item">Coca Cola</li>
+                                      <li class="list-group-item">Spritus</li>
+                                      <li class="list-group-item">Liquid</li>
+                                      <li class="list-group-item">Batre</li>
+                                      <li class="list-group-item">Pertamax</li>
+                                    </ul>
+                                    </div></div>
+                                    <div class="wizard-pane" role="tabpanel">Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</div>
+                                    <div class="wizard-pane" role="tabpanel">Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>	
+    <!-- jQuery -->
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="jquery-wizard-master/dist/jquery-wizard.min.js"></script>
+    <script src="sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+    (function() {
+        $('#exampleBasic').wizard({
+            onFinish: function() {
+                swal("Data Berhasil Di Simpan!", "Have A Nice Dream");
+            }
+        });
+        $('#exampleValidator').wizard({
+            onInit: function() {
+                $('#validation').formValidation({
+                    framework: 'bootstrap',
+                });
+            },
+        });
+    })();
+    </script>
+    <!--Style Switcher -->
+</body>
+
+</html>
