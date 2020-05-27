@@ -22,7 +22,24 @@ class Skpd_model extends CI_Model
       $data = array();
       foreach ($query->result_array() as $row)
       {
+        $data['nama_skpd'] = 'Pilih SOPD';
         $data[$row['nama_skpd']] = $row['nama_skpd'];
+      }
+      return $data;
+    }
+  }
+
+  function get_combo_skpd_seo()
+  {
+    $this->db->order_by('nama_skpd', 'ASC');
+    $query = $this->db->get($this->table);
+
+    if($query->num_rows() > 0){
+      $data = array();
+      foreach ($query->result_array() as $row)
+      {
+        $data['nama_skpd'] = 'Pilih SOPD';
+        $data[$row['nama_skpd_seo']] = $row['nama_skpd'];
       }
       return $data;
     }
@@ -43,6 +60,7 @@ class Skpd_model extends CI_Model
       $data = array();
       foreach ($query->result_array() as $row)
       {
+        $data['nama_skpd'] = 'Silahkan Pilih SKPD';
         $data[$row['nama_skpd']] = $row['nama_skpd'];
       }
       return $data;
@@ -55,6 +73,12 @@ class Skpd_model extends CI_Model
     $this->db->where($this->id, $id);
     $this->db->or_where('nama_skpd_seo', $id);
     return $this->db->get($this->table)->row();
+  }
+
+  function get_by_skpd_seo($skpd_seo)
+  {
+    $this->db->where('nama_skpd_seo', $skpd_seo);
+    return $this->db->get($this->table)->row('nama_skpd');
   }
 
   // get total rows

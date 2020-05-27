@@ -139,6 +139,7 @@ class Auth extends CI_Controller {
 		}
 
 		$this->form_validation->set_rules('alamat', $this->lang->line('create_user_validation_company_label'), 'trim');
+		$this->form_validation->set_rules('nip', $this->lang->line('create_user_validation_company_label'), 'trim');
 		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim|numeric');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
@@ -158,6 +159,7 @@ class Auth extends CI_Controller {
 			$additional_data = array(
 				'nama' 				=> $this->input->post('nama'),
 				'username'  	=> $this->input->post('username'),
+				'nip'			  	=> $this->input->post('nip'),
 				'alamat'    	=> $this->input->post('alamat'),
 				'phone'      	=> $this->input->post('phone'),
 				'usertype'    => $this->input->post('usertype'),
@@ -201,6 +203,13 @@ class Auth extends CI_Controller {
 				'type'  => 'text',
 				'class'  => 'form-control',
 				'value' => $this->form_validation->set_value('email'),
+			);
+			$this->data['nip'] = array(
+				'name'  => 'nip',
+				'id'    => 'nip',
+				'type'  => 'text',
+				'class'  => 'form-control',
+				'value' => $this->form_validation->set_value('nip'),
 			);
 			$this->data['phone'] = array(
 				'name'  => 'phone',
@@ -278,15 +287,29 @@ class Auth extends CI_Controller {
 				$this->form_validation->set_rules('password_confirm', $this->lang->line('edit_user_validation_password_confirm_label'), 'required');
 			}
 
+
 			if ($this->form_validation->run() === TRUE){
-				$data = array(
-					'nama' 			=> $this->input->post('nama'),
-					'username'  => $this->input->post('username'),
-					'email'     => $this->input->post('email'),
-					'usertype'  => $this->input->post('usertype'),
-					'alamat'  	=> $this->input->post('alamat'),
-					'phone'     => $this->input->post('phone'),
-				);
+				if ($this->ion_auth->is_superadmin()){
+						$data = array(
+							'nama' 			=> $this->input->post('nama'),
+							'username'  => $this->input->post('username'),
+							'nip'  			=> $this->input->post('nip'),
+							'email'     => $this->input->post('email'),
+							'usertype'  => $this->input->post('usertype'),
+							'alamat'  	=> $this->input->post('alamat'),
+							'phone'     => $this->input->post('phone'),
+						);
+			} else {
+
+						$data = array(
+							'nama' 			=> $this->input->post('nama'),
+							'username'  => $this->input->post('username'),
+							'email'     => $this->input->post('email'),
+							'alamat'  	=> $this->input->post('alamat'),
+							'phone'     => $this->input->post('phone'),
+						);
+			}
+
 
 				// jika password terisi
 				if ($this->input->post('password')){
@@ -333,6 +356,7 @@ class Auth extends CI_Controller {
 			'class'  => 'form-control',
 			'value' => $this->form_validation->set_value('nama', $user->nama),
 		);
+		if ($this->ion_auth->is_superadmin()){
 		$this->data['username'] = array(
 			'name'  => 'username',
 			'id'    => 'username',
@@ -340,6 +364,16 @@ class Auth extends CI_Controller {
 			'class'  => 'form-control',
 			'value' => $this->form_validation->set_value('username', $user->username),
 		);
+		}else{
+			$this->data['username'] = array(
+				'name'  => 'username',
+				'id'    => 'username',
+				'type'  => 'text',
+				'class'  => 'form-control',
+				'readonly' => 'readonly',
+				'value' => $this->form_validation->set_value('username', $user->username),
+			);
+		}
 		$this->data['email'] = array(
 			'name'  => 'email',
 			'id'    => 'email',
@@ -347,6 +381,24 @@ class Auth extends CI_Controller {
 			'class'  => 'form-control',
 			'value' => $this->form_validation->set_value('email', $user->email),
 		);
+		if ($this->ion_auth->is_superadmin()){
+		$this->data['nip'] = array(
+			'name'  => 'nip',
+			'id'    => 'nip',
+			'type'  => 'text',
+			'class'  => 'form-control',
+			'value' => $this->form_validation->set_value('nip', $user->nip),
+		);
+	} else {
+		$this->data['nip'] = array(
+			'name'  => 'nip',
+			'id'    => 'nip',
+			'type'  => 'text',
+			'class'  => 'form-control',
+			'readonly' => 'readonly',
+			'value' => $this->form_validation->set_value('nip', $user->nip),
+		);
+	}
 		$this->data['alamat'] = array(
 			'name'  => 'alamat',
 			'id'    => 'alamat',

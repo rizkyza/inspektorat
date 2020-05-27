@@ -7,7 +7,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url()?>assets/plugins/images/favicon.png">
-<title>Inspektorat Kalimantan Selatan - Login</title>
+<title>Inspektorat Daerah Kalimantan Selatan - Login</title>
 <!-- Bootstrap Core CSS -->
 <link href="<?php echo base_url()?>assets/template/backend/ampleadmin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- animation CSS -->
@@ -29,6 +29,7 @@
 
 </head>
 <body>
+  <div id="loading"></div>
 <!-- Preloader -->
 <div class="preloader">
   <div class="cssload-speeding-wheel"></div>
@@ -38,9 +39,10 @@
               <div class="inner-panel">
                   <a href="javascript:void(0)" class="p-20 di"></a>
                   <div class="lg-content">
-                      <h2>INSPEKTORAT KALIMANTAN SELATAN</h2>
-                      <p class="text-muted">Website e-LHP inspektur pembantu wilayah provinsi kalimantan selatan. </p>
-                      <a href="#" class="btn btn-rounded btn-info p-l-20 p-r-20"> Kembali ke Homepage</a>
+                      <img src="<?php echo base_url()?>assets/images/logo-kalsel.png" alt="User Image" width ="20%" />
+                      <h2>INSPEKTORAT DAERAH</h2><h2>KALIMANTAN SELATAN</h2>
+                      <p class="text-muted">Website SIWASIT Inspektorat Daerah Provinsi Kalimantan Selatan. </p>
+                      <a href="<?php echo base_url(); ?>" class="btn btn-rounded btn-info p-l-20 p-r-20"> Kembali ke Homepage</a>
                   </div>
               </div>
             </div>
@@ -49,7 +51,7 @@
                 <div class="white-box">
                   <div id="infoMessage"><?php echo $message;?></div>
                   <?php echo form_open("admin/auth/login");?>
-                    <h3 class="box-title m-b-0">Sign In to Admin</h3>
+                    <h3 class="box-title m-b-0">Sign In to Application</h3>
                     <small>Masukkan detail anda dibawah</small>
                   <form class="form-horizontal new-lg-form" id="loginform" action="#">
 
@@ -83,7 +85,6 @@
 
 
 </section>
-
 
 <!-- jQuery -->
 <script src="<?php echo base_url()?>assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>

@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title><?php echo $title;?></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
     <!-- Bootstrap 3.3.4 -->
     <link href="<?php echo base_url()?>assets/template/backend/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="<?php echo base_url()?>assets/template/backend/bootstrap/js/bootstrap.min.js"></script>
+
     <!-- Theme style -->
     <link href="<?php echo base_url()?>assets/template/backend/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url()?>assets/template/backend/dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
@@ -13,43 +16,54 @@
     <link href="<?php echo base_url()?>assets/template/backend/dist/css/skins/skin-green.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url()?>assets/template/backend/dist/css/skins/skin-red.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url()?>assets/template/backend/dist/css/skins/skin-yellow.min.css" rel="stylesheet" type="text/css" />
+
     <!-- jQuery 2.1.4 -->
-    <script src="<?php echo base_url()?>assets/plugins/jquery2/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url()?>assets/plugins/jquery/jquery-2.2.3.min.js"></script>
     <script src="<?php echo base_url()?>assets/plugins/jQueryUI/jquery-ui-1.10.3.min.js"></script>
 
     <!-- Bootstrap 3.3.2 JS -->
     <script src="<?php echo base_url()?>assets/template/backend/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
     <!-- iCheck for checkboxes and radio inputs -->
     <link href="<?php echo base_url()?>assets/plugins/iCheck/all.css" rel="stylesheet" >
 
     <!-- AdminLTE App -->
     <script src="<?php echo base_url()?>assets/template/backend/dist/js/app.min.js" type="text/javascript"></script>
+
     <!-- Slim Scroll -->
     <script src="<?php echo base_url()?>assets/plugins/slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?php echo base_url() ?>assets/images/fav.ico" />
+
     <!-- DATA TABLES -->
     <link href="<?php echo base_url('assets/plugins/datatables/dataTables.bootstrap.css') ?>" rel="stylesheet" type="text/css" />
     <script src="<?php echo base_url('assets/plugins/datatables/jquery.dataTables.min.js') ?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/plugins/datatables/dataTables.bootstrap.min.js') ?>" type="text/javascript"></script>
     <script src="http://cdn.datatables.net/plug-ins/1.10.16/api/fnReloadAjax.js" type="text/javascript"></script>
 
-
-
     <!-- Fonts and Icons -->
     <link href="<?php echo base_url()?>assets/plugins/font-awesome4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+
     <!-- Datepicker -->
+    <script src="<?php echo base_url() ?>assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <link href="<?php echo base_url('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css') ?>" rel="stylesheet" type="text/css" />
+    <script src="<?php echo base_url() ?>assets/plugins/datepicker/locales/bootstrap-datepicker.id.min.js"charset="UTF-8"></script>
 
-    <link href="<?php echo base_url() ?>assets/plugins/datepicker/css/bootstrap-datepicker.css">
 
+    <!-- full calendar-->
+    <link href='<?php echo base_url();?>assets/plugins/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
+    <link href='<?php echo base_url();?>assets/plugins/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 
-
+    <script src='<?php echo base_url();?>assets/plugins/fullcalendar/lib/moment.min.js'></script>
+    <script src='<?php echo base_url();?>assets/plugins/fullcalendar/fullcalendar.min.js'></script>
 
     <!--alerts CSS -->
     <link href="<?php echo base_url()?>assets/template/backend/formwizard/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
     <script src="<?php echo base_url()?>assets/template/backend/formwizard/sweetalert/sweetalert.min.js"></script>
+
     <!-- Wizard CSS -->
     <link href="<?php echo base_url()?>assets/template/backend/formwizard/jquery-wizard-master/css/wizard.css" rel="stylesheet">
     <script src="<?php echo base_url()?>assets/template/backend/formwizard/jquery-wizard-master/dist/jquery-wizard.min.js"></script>
@@ -79,5 +93,5 @@
 
   </head>
 
-  <body class="skin-green fixed sidebar-mini">
+  <body class="skin-blue fixed sidebar-mini">
     <div class="wrapper">

@@ -148,6 +148,67 @@ class Ion_auth
 		return null;
 	}
 
+	public function is_visitor()
+	{
+		$usertype = $this->session->userdata('usertype');
+		if ($usertype == 'Visitor')
+		{
+			return $usertype;
+		}
+		return null;
+	}
+
+	public function is_auditor()
+	{
+		$usertype = $this->session->userdata('usertype');
+		if ($usertype == 'Irbanwil 01' || $usertype == 'Irbanwil 02' || $usertype == 'Irbanwil 03' || $usertype == 'Irbanwil 04' || $usertype == 'Irbanwil 05' || $usertype == 'Irbanwil 06')
+		{
+			return $usertype;
+		}
+		return null;
+	}
+
+	public function is_ketuatim()
+	{
+		$nip = $this->session->userdata('nip');
+
+		$this->load->model('Entry_tim_model');
+		$rows = $this->Entry_tim_model->get_ketuatim_by_nip($nip);
+		$nipketuatim = $rows;
+
+		if ($rows)
+		{
+			return $nip;
+		}
+		return null;
+	}
+
+	public function is_dalnis()
+	{
+		$nip = $this->session->userdata('nip');
+
+		$this->load->model('Entry_tim_model');
+		$rows = $this->Entry_tim_model->get_dalnis_by_nip($nip);
+		$nipdalnis = $rows;
+
+		if ($rows)
+		{
+			return $nip;
+		}
+		return null;
+	}
+
+	public function is_evaluasi()
+	{
+		$usertype = $this->session->userdata('usertype');
+		if ($usertype == 'evaluasi')
+		{
+			return $usertype;
+		}
+		return null;
+	}
+
+
 	/**
 	 * forgotten password feature
 	 *

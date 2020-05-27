@@ -52,6 +52,17 @@ class Tim_model extends CI_Model
     return $this->db->get($this->table)->row();
   }
 
+  function get_by_nospt_nip($nospt)
+  {
+    if($this->session->userdata('usertype') == 'superadmin'){
+      return $this->db->get($this->table)->row();
+    } else {
+      $this->db->where('nip', $this->session->userdata('nip'));
+      $this->db->like('no_spt', $nospt);
+      return $this->db->get($this->table)->row();
+    }
+  }
+
   // get total rows
   function total_rows() {
     return $this->db->get($this->table)->num_rows();

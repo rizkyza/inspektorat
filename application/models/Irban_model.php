@@ -21,7 +21,24 @@ class Irban_model extends CI_Model
       $data = array();
       foreach ($query->result_array() as $row)
       {
+        $data['nama_irban'] = 'Silahkan Pilih Irbanwil';
         $data[$row['nama_irban']] = $row['nama_irban'];
+      }
+      return $data;
+    }
+  }
+
+  function get_combo_irban_seo()
+  {
+    $this->db->order_by('nama_irban_seo', 'ASC');
+    $query = $this->db->get($this->table);
+
+    if($query->num_rows() > 0){
+      $data = array();
+      foreach ($query->result_array() as $row)
+      {
+        $data['nama_irban'] = 'Silahkan Pilih Irbanwil';
+        $data[$row['nama_irban_seo']] = $row['nama_irban'];
       }
       return $data;
     }

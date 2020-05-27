@@ -29,6 +29,19 @@ class Auditor extends CI_Controller
     $this->load->view('back/auditor/auditor_list', $this->data);
   }
 
+  function foto_auditor(){
+    $output = array();
+    $this->load->model("Auditor_model");
+    $nip = $this->input->post('nip');
+    $data = $this->Auditor_model->get_by_nip($nip);
+    foreach($data as $row)
+    {
+         $output['foto'] = $row->foto;
+         $output['nama'] = $row->nama_auditor;
+    }
+    echo json_encode($output);
+  }
+
   public function create()
   {
     $this->data['title']          = 'Tambah Auditor Baru';

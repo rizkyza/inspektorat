@@ -37,13 +37,12 @@ class Auditor_model extends CI_Model
     $this->db->where($this->nama_irban,$this->session->userdata('usertype'));
     $this->db->order_by('nama_auditor', 'ASC');
     $query = $this->db->get($this->table);
-
     if($query->num_rows() > 0){
       $data = array();
       foreach ($query->result_array() as $row)
       {
-        $data[$row['nama_auditor']] = $row['nama_auditor'];
-
+        $data['nip'] = 'Pilih Auditor';
+        $data[$row['nip']] = $row['nip'].' - '.$row['nama_auditor'];
       }
       return $data;
     }
@@ -55,8 +54,8 @@ class Auditor_model extends CI_Model
       $data = array();
       foreach ($query->result_array() as $row)
       {
-        //$data[$row['nip']] = $row['nip'];
-        $data[$row['nama_auditor']] = $row['nama_auditor'];
+        $data['nip'] = 'Pilih Auditor';
+        $data[$row['nip']] = $row['nip'].'-'.$row['nama_auditor'];
       }
       return $data;
     }
@@ -68,14 +67,39 @@ class Auditor_model extends CI_Model
   {
     $query=$this->db->where('id_auditor', $id);
     $this->db->or_where('nama_auditor', $id);
-    return $this->db->get($this->table)->row();  
+    return $this->db->get($this->table)->row();
   }
 
-  function fetch_single_id($nama_auditor)
+  function get_by_nip($nip)
   {
-    $this->db->where("nama_auditor", $nama_auditor);
+    $query=$this->db->where('nip', $nip);
     $query=$this->db->get('auditor');
     return $query->result();
+  }
+
+  function get_by_nip_laporan($nip)
+  {
+    $query=$this->db->where('nip', $nip);
+    return $this->db->get($this->table)->row();
+  }
+
+  function get_foto_by_nip($nip)
+  {
+    $query=$this->db->where('nip', $nip);
+    return $this->db->get($this->table)->row()->foto;
+  }
+
+  function fetch_single_id($nip)
+  {
+    $this->db->where("nip", $nip);
+    $query=$this->db->get('auditor');
+    return $query->result();
+  }
+
+  function fetch_single_penanggungjawab($jabatan)
+  {
+    $this->db->where("jabatan", $jabatan);
+    return $this->db->get('inspektur')->result();
   }
 
   // get total rows

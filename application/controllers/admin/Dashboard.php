@@ -10,6 +10,9 @@ class Dashboard extends CI_Controller {
 		$this->load->model('Auditor_model');
     $this->load->model('Ion_auth_model');
 		$this->load->model('Entry_tim_model');
+		$this->load->model('Lhp_model');
+		$this->load->model('Temuan_model');
+		$this->load->model('Rekomendasi_model');
 
     /* cek status login */
 		if (!$this->ion_auth->logged_in()){
@@ -26,8 +29,12 @@ class Dashboard extends CI_Controller {
 	      'button' 							=> 'Tambah',
 		    'total_irban' 				=> $this->Irban_model->total_rows(),
 		    'total_skpd' 					=> $this->Skpd_model->total_rows(),
-				'total_auditor' 					=> $this->Auditor_model->total_rows(),
+				'total_auditor' 			=> $this->Auditor_model->total_rows(),
 				'total_user' 					=> $this->Ion_auth_model->total_rows(),
+				'total_lhp' 					=> $this->Lhp_model->total_rows(),
+				'total_spt' 					=> $this->Spt_model->total_rows(),
+				'total_temuan' 				=> $this->Temuan_model->total_rows(),
+				'total_rekomendasi' 	=> $this->Rekomendasi_model->total_rows(),
 			);
 
 			$this->load->view('back/dashboard',$this->data);
